@@ -19,6 +19,12 @@ function App() {
     setIsAddPlacePopupOpen(true);
   }
 
+  function closeAllPopups(){
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+  }
+
   return (
     <div className="page">
       <Header />
@@ -31,18 +37,21 @@ function App() {
       <Footer />
       <PopupWithForm
         isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
         title="Editar perfil"
         name="popupEditProfile"
         buttonText="Guardar"
       />
       <PopupWithForm
         isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
         title="Cambiar foto de perfil"
         name="popupEditAvatar"
         buttonText="Guardar"
       />
       <PopupWithForm
         isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
         title="Nuevo lugar"
         name="popupAddCards"
         buttonText="Crear"
