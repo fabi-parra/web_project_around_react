@@ -2,13 +2,13 @@ import profileAvatar from "../images/profile__image.png";
 
 export default function Main() {
   function handleEditAvatarClick() {
-    document.querySelector("#popup-avatar-profile").classList.add("popup_open");
+    document.querySelector("#popupEditAvatar").classList.add("popup_open");
   }
   function handleEditProfileClick() {
-    document.querySelector("#popup-profile").classList.add("popup_open");
+    document.querySelector("#popupEditProfile").classList.add("popup_open");
   }
   function handleAddPlaceClick() {
-    document.querySelector("#popup-cards").classList.add("popup_open");
+    document.querySelector("#popupAddCards").classList.add("popup_open");
   }
 
   return (
@@ -59,7 +59,7 @@ export default function Main() {
         </article>
       </template>
 
-      <section className="popup" id="popup-profile">
+      <section className="popup" id="popupEditProfile">
         <div className="popup__container">
           <div className="popup__close-button"></div>
           <h2 className="popup__title">Editar perfil</h2>
@@ -97,7 +97,7 @@ export default function Main() {
         </div>
       </section>
 
-      <section className="popup" id="popup-cards">
+      <section className="popup" id="popupAddCards">
         <div className="popup__container">
           <div className="popup__close-button"></div>
           <h2 className="popup__title">Nuevo lugar</h2>
@@ -129,7 +129,7 @@ export default function Main() {
         </div>
       </section>
 
-      <section className="popup" id="popup-photo">
+      <section className="popup" id="popupWithPhoto">
         <div className="popup__container popup__container_type_popup-photo">
           <div className="popup__close-button"> </div>
           <img src=" " className="popup__image" alt="" />
@@ -137,7 +137,7 @@ export default function Main() {
         </div>
       </section>
 
-      <section className="popup" id="popup-avatar-profile">
+      <section className="popup" id="popupEditAvatar">
         <div className="popup__container">
           <div className="popup__close-button"></div>
           <h2 className="popup__title">Cambiar foto de perfil</h2>
@@ -161,7 +161,7 @@ export default function Main() {
         </div>
       </section>
 
-      <section className="popup" id="popup-delete-confirmation">
+      <section className="popup" id="popupDeleteConfirmation">
         <div className="popup__container popup__container_type_delete-confirmation">
           <div className="popup__close-button"></div>
           <h2 className="popup__title">¿Estás segura/o?</h2>
