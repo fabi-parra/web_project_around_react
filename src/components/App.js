@@ -2,6 +2,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import { useState } from "react";
+import PopupWithForm from "./PopupWithForm";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -15,7 +16,7 @@ function App() {
     setIsEditProfilePopupOpen(true);
   }
   function handleAddPlaceClick() {
-    setIsAddPlacePopupOpen(true)
+    setIsAddPlacePopupOpen(true);
   }
 
   return (
@@ -28,6 +29,24 @@ function App() {
         onCardClick
       />
       <Footer />
+      <PopupWithForm
+        isOpen={isEditProfilePopupOpen}
+        title="Editar perfil"
+        name="popupEditProfile"
+        buttonText="Guardar"
+      />
+      <PopupWithForm
+        isOpen={isEditAvatarPopupOpen}
+        title="Cambiar foto de perfil"
+        name="popupEditAvatar"
+        buttonText="Guardar"
+      />
+      <PopupWithForm
+        isOpen={isAddPlacePopupOpen}
+        title="Nuevo lugar"
+        name="popupAddCards"
+        buttonText="Crear"
+      />
     </div>
   );
 }
