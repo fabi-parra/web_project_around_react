@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../utils/api";
+import Card from "./Card";
 
 export default function Main(props) {
   const [userName, setUserName] = useState("");
@@ -61,19 +62,14 @@ export default function Main(props) {
       </section>
 
       <section className="cards">
-        {cards.map(function(card) {
-          return (
-            <article className="card" key={card._id}>
-              <img alt=" " className="card__image" src={card.link} />
-              <h2 className="card__title">{card.name}</h2>
-              <div className="card__icon card__icon_type_delete"></div>
-              <div className="card__like-elements-container">
-                <div className="card__icon card__icon_type_like"></div>
-                <span className="card__like-counter">{ card.likes.length }</span>
-              </div>
-            </article>
-          );
-        })}
+        {cards.map((cards) => (
+          <Card
+            key={cards._id}
+            name={cards.name}
+            link={cards.link}
+            likes={cards.likes}
+          />
+        ))}
       </section>
 
       <section className="popup" id="popupWithPhoto">
@@ -98,7 +94,6 @@ export default function Main(props) {
           </form>
         </div>
       </section>
-      
     </main>
   );
 }
