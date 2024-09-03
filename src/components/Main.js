@@ -1,6 +1,11 @@
 import profileAvatar from "../images/profile__image.png";
+import { useState, useEffect } from "react";
 
 export default function Main(props) {
+  const [userName, setUserName] = useState("");
+  const [userDescription, setUserDescription] = useState("");
+  const [userAvatar, setUserAvatar] = useState("");
+
   return (
     <main className="content">
       <section className="profile">
