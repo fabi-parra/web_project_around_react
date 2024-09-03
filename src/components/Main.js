@@ -22,6 +22,7 @@ export default function Main(props) {
     async function getCards() {
       const response = await api.getInitialCards();
       setCards(response);
+      console.log(response)
     }
     getCards();
   }, []);
@@ -62,22 +63,16 @@ export default function Main(props) {
       </section>
 
       <section className="cards">
-        {cards.map((cards) => (
+        {cards.map((card) => (
           <Card
-            key={cards._id}
-            name={cards.name}
-            link={cards.link}
-            likes={cards.likes}
+            onCardClick={props.onCardClick}
+            card={card}
+            key={card._id}
+            name={card.name}
+            link={card.link}
+            likes={card.likes}
           />
         ))}
-      </section>
-
-      <section className="popup" id="popupWithPhoto">
-        <div className="popup__container popup__container_type_popup-photo">
-          <div className="popup__close-button"> </div>
-          <img src=" " className="popup__image" alt="" />
-          <h2 className="popup__subtitle"></h2>
-        </div>
       </section>
 
       <section className="popup" id="popupDeleteConfirmation">
