@@ -49,7 +49,30 @@ export default function Main(props) {
         </article>
       </template>
 
-      <section className="popup" id="popupEditProfile">
+      <section className="popup" id="popupWithPhoto">
+        <div className="popup__container popup__container_type_popup-photo">
+          <div className="popup__close-button"> </div>
+          <img src=" " className="popup__image" alt="" />
+          <h2 className="popup__subtitle"></h2>
+        </div>
+      </section>
+
+      <section className="popup" id="popupDeleteConfirmation">
+        <div className="popup__container popup__container_type_delete-confirmation">
+          <div className="popup__close-button"></div>
+          <h2 className="popup__title">¿Estás segura/o?</h2>
+          <form
+            name="delete-confirmation-form"
+            className="popup__form popup__form_delete-confirmation"
+          >
+            <button type="submit" value="submit" className="popup__form-button">
+              Sí
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* <section className="popup" id="popupEditProfile">
         <div className="popup__container">
           <div className="popup__close-button"></div>
           <h2 className="popup__title">Editar perfil</h2>
@@ -119,14 +142,6 @@ export default function Main(props) {
         </div>
       </section>
 
-      <section className="popup" id="popupWithPhoto">
-        <div className="popup__container popup__container_type_popup-photo">
-          <div className="popup__close-button"> </div>
-          <img src=" " className="popup__image" alt="" />
-          <h2 className="popup__subtitle"></h2>
-        </div>
-      </section>
-
       <section className="popup" id="popupEditAvatar">
         <div className="popup__container">
           <div className="popup__close-button"></div>
@@ -149,22 +164,7 @@ export default function Main(props) {
             </button>
           </form>
         </div>
-      </section>
-
-      <section className="popup" id="popupDeleteConfirmation">
-        <div className="popup__container popup__container_type_delete-confirmation">
-          <div className="popup__close-button"></div>
-          <h2 className="popup__title">¿Estás segura/o?</h2>
-          <form
-            name="delete-confirmation-form"
-            className="popup__form popup__form_delete-confirmation"
-          >
-            <button type="submit" value="submit" className="popup__form-button">
-              Sí
-            </button>
-          </form>
-        </div>
-      </section>
+      </section> */}
     </main>
   );
 }
