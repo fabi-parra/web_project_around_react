@@ -1,10 +1,21 @@
-import profileAvatar from "../images/profile__image.png";
 import { useState, useEffect } from "react";
+import api from "../utils/api";
 
 export default function Main(props) {
   const [userName, setUserName] = useState("");
   const [userDescription, setUserDescription] = useState("");
   const [userAvatar, setUserAvatar] = useState("");
+
+  useEffect(() => {
+    async function getValues() {
+      const response = await api.getUserInfo();
+      console.log(response);
+      setUserName(response.name);
+      setUserDescription(response.about);
+      setUserAvatar(response.avatar);
+    }
+    getValues();
+  }, []);
 
   return (
     <main className="content">
@@ -14,9 +25,10 @@ export default function Main(props) {
           onClick={props.onEditAvatarClick}
         >
           <img
-            src={profileAvatar}
+            src={userAvatar}
             alt="espacio con forma circular donde va una foto de perfil del usuario o usuaria"
             className="profile__image"
+            style={{ backgroundImage: `url(${userAvatar})` }}
           />
           <button
             title="editar-foto-perfil"
@@ -26,13 +38,13 @@ export default function Main(props) {
         </div>
         <div className="profile__info-container">
           <div className="profile__name-container">
-            <h2 className="profile__name">Fabiola Parra</h2>
+            <h2 className="profile__name">{userName }</h2>
             <div
               className="profile__edit-button"
               onClick={props.onEditProfileClick}
             ></div>
           </div>
-          <p className="profile__description">Estudiante</p>
+          <p className="profile__description">{ userDescription }</p>
         </div>
         <div
           className="profile__add-button"
