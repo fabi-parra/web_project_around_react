@@ -7,9 +7,8 @@ export default function Cards({ link, name, likes, onCardClick, card }) {
     onCardClick(card);
   }
   const isLiked = card.likes.some((i) => i._id === currentUser._id);
-  const cardLikeButtonClassName = `card__icon_type_like${
-    isLiked ? "card__icon_type_like-active" : ""
-  }`;
+  const cardLikeButtonClassName = `card__icon_type_like ${
+    isLiked && "card__icon_type_like-active"}`;
 
   const isOwn = card.owner._id === currentUser._id;
   const cardDeleteButtonClassName = `${isOwn ? "card__icon_type_delete" : ""}`;
