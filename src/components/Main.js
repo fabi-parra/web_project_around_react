@@ -1,28 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import api from "../utils/api";
 import Card from "./Card";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function Main(props) {
-  const [userName, setUserName] = useState("");
-  const [userDescription, setUserDescription] = useState("");
-  const [userAvatar, setUserAvatar] = useState("");
   const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    async function getValues() {
-      const response = await api.getUserInfo();
-      setUserName(response.name);
-      setUserDescription(response.about);
-      setUserAvatar(response.avatar);
-    }
-    getValues();
-  }, []);
+  const user = useContext(CurrentUserContext);
 
   useEffect(() => {
     async function getCards() {
       const response = await api.getInitialCards();
       setCards(response);
-      console.log(response)
     }
     getCards();
   }, []);
@@ -35,10 +23,10 @@ export default function Main(props) {
           onClick={props.onEditAvatarClick}
         >
           <img
-            src={userAvatar}
+            src={user.Avatar}
             alt="espacio con forma circular donde va una foto de perfil del usuario o usuaria"
             className="profile__image"
-            style={{ backgroundImage: `url(${userAvatar})` }}
+            style={{ backgroundImage: `url(${user.Avatar})` }}
           />
           <button
             title="editar-foto-perfil"
@@ -48,13 +36,13 @@ export default function Main(props) {
         </div>
         <div className="profile__info-container">
           <div className="profile__name-container">
-            <h2 className="profile__name">{userName}</h2>
+            <h2 className="profile__name">{user.Name}</h2>
             <div
               className="profile__edit-button"
               onClick={props.onEditProfileClick}
             ></div>
           </div>
-          <p className="profile__description">{userDescription}</p>
+          <p className="profile__description">{user.About}</p>
         </div>
         <div
           className="profile__add-button"
