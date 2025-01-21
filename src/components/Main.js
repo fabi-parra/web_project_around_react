@@ -5,7 +5,7 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function Main(props) {
   const [cards, setCards] = useState([]);
-  const user = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
     async function getCards() {
@@ -23,10 +23,10 @@ export default function Main(props) {
           onClick={props.onEditAvatarClick}
         >
           <img
-            src={user.Avatar}
+            src={currentUser.avatar}
             alt="espacio con forma circular donde va una foto de perfil del usuario o usuaria"
             className="profile__image"
-            style={{ backgroundImage: `url(${user.Avatar})` }}
+            style={{ backgroundImage: `url(${currentUser.avatar})` }}
           />
           <button
             title="editar-foto-perfil"
@@ -36,13 +36,13 @@ export default function Main(props) {
         </div>
         <div className="profile__info-container">
           <div className="profile__name-container">
-            <h2 className="profile__name">{user.Name}</h2>
+            <h2 className="profile__name">{currentUser.name}</h2>
             <div
               className="profile__edit-button"
               onClick={props.onEditProfileClick}
             ></div>
           </div>
-          <p className="profile__description">{user.About}</p>
+          <p className="profile__description">{currentUser.about}</p>
         </div>
         <div
           className="profile__add-button"

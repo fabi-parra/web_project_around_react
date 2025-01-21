@@ -46,7 +46,7 @@ function App() {
 
   return (
     <div className="page">
-      <CurrentUserContext.Provider value= { currentUser}>
+      <CurrentUserContext.Provider value= { currentUser }>
       <Header />
       <Main
         onEditAvatarClick={handleEditAvatarClick}
