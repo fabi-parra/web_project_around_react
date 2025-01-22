@@ -17,10 +17,23 @@ export default function Main(props) {
 
   async function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
-    await api.changeLikeCardStatus(card._id, isLiked).then((newCard) => {
-        setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
-    }).catch((error) => console.error(error));
-}
+    await api
+      .changeLikeCardStatus(card._id, isLiked)
+      .then((newCard) => {
+        setCards((state) =>
+          state.map((currentCard) =>
+            currentCard._id === card._id ? newCard : currentCard
+          )
+        );
+      })
+      .catch((error) => console.error(error));
+  }
+
+  async function handleCardDelete(card) {
+    api.deleteCard(card._id).then(() => {
+      setCards((state) => state.filter((c) => c._id !== card._id));
+    });
+  }
 
   return (
     <main className="content">
@@ -67,6 +80,7 @@ export default function Main(props) {
             link={card.link}
             likes={card.likes}
             onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
           />
         ))}
       </section>
