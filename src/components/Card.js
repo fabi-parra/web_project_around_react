@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-export default function Cards({ link, name, likes, onCardClick, card }) {
+export default function Cards({ link, name, likes, onCardClick, card, onCardLike }) {
   const currentUser = useContext(CurrentUserContext);
   function handleClick() {
     onCardClick(card);
@@ -13,13 +13,17 @@ export default function Cards({ link, name, likes, onCardClick, card }) {
   const isOwn = card.owner._id === currentUser._id;
   const cardDeleteButtonClassName = `${isOwn ? "card__icon_type_delete" : ""}`;
 
+  function handleLikeClick(){
+    onCardLike(card)
+  }
+
   return (
     <article className="card">
       <img alt=" " className="card__image" src={link} onClick={handleClick} />
       <h2 className="card__title">{name}</h2>
       <div className={cardDeleteButtonClassName}></div>
       <div className="card__like-elements-container">
-        <div className={cardLikeButtonClassName}></div>
+        <div className={cardLikeButtonClassName} onClick={handleLikeClick}></div>
         <span className="card__like-counter">{likes.length}</span>
       </div>
     </article>
