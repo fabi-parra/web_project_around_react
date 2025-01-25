@@ -24,12 +24,25 @@ function App() {
     getValues();
   }, []);
 
+  const handleUpdateUser = (data) => {
+    (async () => {
+      await api
+        .editProfile(data)
+        .then((newData) => {
+          setCurrentUser(newData);
+          closeAllPopups();
+        })
+        .catch((error) => console.error(error));
+    })();
+  };
+
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   }
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
+
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(true);
   }
@@ -47,7 +60,7 @@ function App() {
 
   return (
     <div className="page">
-      <CurrentUserContext.Provider value={currentUser}>
+      <CurrentUserContext.Provider value={{ currentUser, handleUpdateUser }}>
         <Header />
         <Main
           onEditAvatarClick={handleEditAvatarClick}
@@ -59,6 +72,7 @@ function App() {
         <EditProfilePopup
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
+          onUpdateUser={handleUpdateUser}
         />
         <PopupWithForm
           isOpen={isEditAvatarPopupOpen}
