@@ -1,5 +1,5 @@
 import React, { createRef } from "react";
-import PopupWithForm from "../Popup";
+import Popup from "../Popup";
 
 function EditAvatar({ isOpen, onClose, onUpdateAvatar }) {
   const inputRef = createRef();
@@ -9,7 +9,7 @@ function EditAvatar({ isOpen, onClose, onUpdateAvatar }) {
   }
 
   return (
-    <PopupWithForm
+    <Popup
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -26,7 +26,7 @@ function EditAvatar({ isOpen, onClose, onUpdateAvatar }) {
         ref={inputRef}
         required
       />
-    </PopupWithForm>
+    </Popup>
   );
 }
 

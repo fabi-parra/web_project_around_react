@@ -1,4 +1,4 @@
-import PopupWithForm from "../Popup";
+import Popup from "../Popup";
 import { useState, useContext, useEffect } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
@@ -27,7 +27,7 @@ function EditProfile({ isOpen, onClose, onUpdateUser }) {
   }
 
   return (
-    <PopupWithForm
+    <Popup
       isOpen={isOpen}
       onClose={onClose}
       onUpdateUser={onUpdateUser}
@@ -60,7 +60,7 @@ function EditProfile({ isOpen, onClose, onUpdateUser }) {
         value={description}
         onChange={handleDescriptionChange}
       ></input>
-    </PopupWithForm>
+    </Popup>
   );
 }
 

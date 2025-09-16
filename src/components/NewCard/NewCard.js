@@ -1,4 +1,4 @@
-import PopupWithForm from "../Popup";
+import Popup from "../Popup";
 import { createRef } from "react";
 
 function NewCard({ isOpen, onClose, onAddPlace }) {
@@ -14,7 +14,7 @@ function NewCard({ isOpen, onClose, onAddPlace }) {
   };
 
   return (
-    <PopupWithForm
+    <Popup
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
@@ -42,7 +42,7 @@ function NewCard({ isOpen, onClose, onAddPlace }) {
         placeholder="Enlace a la imagen"
         required
       />
-    </PopupWithForm>
+    </Popup>
   );
 }
 
