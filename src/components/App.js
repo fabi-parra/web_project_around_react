@@ -2,10 +2,10 @@ import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import api from "../utils/api";
 import Header from "./Header";
-import Main from "./Main";
+import Main from "./Main/Main";
 import AddPlacePopup from "./AddPlacePopup";
 import ImagePopup from "./ImagePopup";
-import Footer from "./Footer";
+import Footer from "./Footer/Footer";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 
@@ -56,7 +56,7 @@ function App() {
         })
         .catch((error) => console.error(error));
     })();
-  }
+  };
 
   const handleAddPlace = (data) => {
     (async () => {
@@ -68,7 +68,7 @@ function App() {
         })
         .catch((error) => console.error(error));
     })();
-  }
+  };
 
   async function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
@@ -136,12 +136,12 @@ function App() {
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
-          />
+        />
         <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           onAddPlace={handleAddPlace}
-          />
+        />
         <ImagePopup
           link={selectedCard.link}
           title={selectedCard.name}
