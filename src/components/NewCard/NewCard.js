@@ -1,13 +1,16 @@
-import PopupWithForm from "./PopupWithForm";
+import PopupWithForm from "../Popup";
 import { createRef } from "react";
 
-function AddPlacePopup({isOpen, onClose, onAddPlace}) {
+function NewCard({ isOpen, onClose, onAddPlace }) {
   const titleRef = createRef();
   const imageLinkRef = createRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddPlace({ name: titleRef.current.value, link: imageLinkRef.current.value });
+    onAddPlace({
+      name: titleRef.current.value,
+      link: imageLinkRef.current.value,
+    });
   };
 
   return (
@@ -43,4 +46,4 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
   );
 }
 
-export default AddPlacePopup;
+export default NewCard;

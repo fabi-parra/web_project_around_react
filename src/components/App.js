@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import api from "../utils/api";
-import Header from "./Header";
+import Header from "./Header/Header";
 import Main from "./Main/Main";
-import AddPlacePopup from "./AddPlacePopup";
-import ImagePopup from "./ImagePopup";
+import NewCard from "./NewCard/NewCard";
+import ImagePopup from "./ImagePopup/ImagePopup";
 import Footer from "./Footer/Footer";
-import EditProfilePopup from "./EditProfilePopup";
-import EditAvatarPopup from "./EditAvatarPopup";
+import EditProfile from "./EditProfile/EditProfile";
+import EditAvatar from "./EditAvatar/EditAvatar";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -127,17 +127,17 @@ function App() {
           onCardDelete={handleCardDelete}
         />
         <Footer />
-        <EditProfilePopup
+        <EditProfile
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
         />
-        <EditAvatarPopup
+        <EditAvatar
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
           onUpdateAvatar={handleUpdateAvatar}
         />
-        <AddPlacePopup
+        <NewCard
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           onAddPlace={handleAddPlace}
