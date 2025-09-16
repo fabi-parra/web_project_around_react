@@ -7,6 +7,7 @@ import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import Footer from "./Footer";
 import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -36,9 +37,22 @@ function App() {
     })();
   };
 
+  const handleUpdateAvatar = (link) => {
+    (async () => {
+      await api
+        .editAvatarProfile(link)
+        .then((newAvatar) => {
+          setCurrentUser(newAvatar);
+          closeAllPopups();
+        })
+        .catch((error) => console.error(error));
+    })();
+  }
+
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(true);
   }
+
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
   }
@@ -74,22 +88,11 @@ function App() {
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
         />
-        <PopupWithForm
+        <EditAvatarPopup
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
-          title="Cambiar foto de perfil"
-          name="popupEditAvatar"
-          buttonText="Guardar"
-        >
-          <input
-            type="url"
-            className="popup__form-input popup__form-input_type_link"
-            id="avatar-link"
-            name="avatarLink"
-            placeholder="Enlace a la imagen"
-            required
+          onUpdateAvatar={handleUpdateAvatar}
           />
-        </PopupWithForm>
         <PopupWithForm
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
